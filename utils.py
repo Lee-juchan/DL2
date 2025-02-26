@@ -72,19 +72,21 @@ def img_read_plot(src, file):
 
 
 # plot loss history
-def plot_loss(loss_history, logy=False, title=None):
+def plot_loss(loss_tr_hist, loss_val_hist, logy=False, title=None):
 
     if logy:
-        plt.semilogy(loss_history)
+        plt.semilogy(loss_tr_hist)
+        plt.semilogy(loss_val_hist)
     else:
-        plt.plot(loss_history)
+        plt.plot(loss_tr_hist)
+        plt.plot(loss_val_hist)
 
     if title is not None:
         plt.title(title)
 
     plt.ylabel('Loss')
     plt.xlabel('Epochs')
-    plt.legend(['Training data'], loc=0)
+    plt.legend(['Training data', 'Validation data'], loc=0)
     plt.show()
 
 
